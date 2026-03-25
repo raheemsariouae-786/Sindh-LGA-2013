@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>سندھ لوکل گورنمنٹ - شکایات پورٹل</title>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f4f8;
+            font-family: 'Segoe UI', 'Roboto', 'Noto Naskh Arabic', 'Urdu Typesetting', Tahoma, sans-serif;
+            padding: 20px;
+            color: #1e2a3e;
+        }
+
+        html {
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 20px 24px 40px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #0f3b2c;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            border-right: 6px solid #2c7a4d;
+            padding-right: 15px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 16px;
+            background: #fff;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2c7a4d;
+            box-shadow: 0 0 0 3px rgba(44,122,77,0.2);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button, .btn {
+            background: #2c7a4d;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #1e5a3a;
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: #475569;
+        }
+
+        .btn-secondary:hover {
+            background: #1e293b;
+        }
+
+        .btn-outline {
+            background: white;
+            color: #2c7a4d;
+            border: 2px solid #2c7a4d;
+        }
+
+        .btn-outline:hover {
+            background: #e6f7ef;
+        }
+
+        .info-text {
+            font-size: 0.85rem;
+            color: #4b5563;
+            margin-top: 5px;
+        }
+
+        .tracking-card, .reply-card {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 16px;
+            margin: 15px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            background: #facc15;
+            color: #422006;
+        }
+
+        .status-resolved {
+            background: #2c7a4d;
+            color: white;
+        }
+
+        .admin-section {
+            background: #f1f5f9;
+            border-radius: 24px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .complaint-item {
+            background: white;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        hr {
+            margin: 20px 0;
+        }
+
+        .flex-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .flex-btns button {
+            flex: 1;
+        }
+
+        @media (max-width: 550px) {
+            body {
+                padding: 12px;
+            }
+            .container {
+                padding: 16px;
+            }
+            button {
+                padding: 12px;
+            }
+        }
+
+        .error {
+            color: #b91c1c;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        .success {
+            color: #2c7a4d;
+            background: #e0f2e9;
+            padding: 10px;
+            border-radius: 16px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🏛️ سندھ لوکل گورنمنٹ</h1>
+    <p style="margin-bottom: 20px;">عوامی شکایات کا نظام — برائے فوری توجہ</p>
+
+    <!-- شکایت فارم -->
+    <div id="complaintFormSection">
+        <h2>📝 نئی شکایت درج کریں</h2>
+        <form id="complaintForm">
+            <div class="form-group">
+                <label>آپ کا نام *</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label>فون نمبر *</label>
+                <input type="tel" id="phone" required pattern="[0-9]{10,13}" placeholder="03001234567">
+            </div>
+            <div class="form-group">
+                <label>ای میل (اختیاری)</label>
+                <input type="email" id="email" placeholder="example@email.com">
+                <div class="info-text">اگر ای میل دیں گے تو شکایت کی کاپی آپ کو بھیج دی جائے گی۔</div>
+            </div>
+            <div class="form-group">
+                <label>علاقہ / گلی نمبر *</label>
+                <input type="text" id="address" required placeholder="یونین کونسل، گلی، سیکٹر">
+            </div>
+            <div class="form-group">
+                <label>مسئلے کی قسم *</label>
+                <select id="category" required>
+                    <option value="">منتخب کریں</option>
+                    <option value="سڑک">سڑک / فرش</option>
+                    <option value="نالی">نالی / نکاسی آب</option>
+                    <option value="کچرا">کچرا / صفائی</option>
+                    <option value="پانی">پانی کی فراہمی</option>
+                    <option value="بجلی">بجلی / اسٹریٹ لائٹ</option>
+                    <option value="پارک">پارک / تفریح</option>
+                    <option value="دیگر">دیگر</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>مسئلے کی مکمل تفصیل *</label>
+                <textarea id="description" required placeholder="مثلاً: سڑک پر بڑا گڑھا ہے، گزشتہ دو ہفتوں سے پانی بند ہے..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>لوکیشن (خودکار یا نقشہ لنک)</label>
+                <button type="button" id="getLocationBtn" class="btn-outline" style="width: auto; padding: 8px 16px;">📍 میری موجودہ لوکیشن لیں</button>
+                <input type="text" id="locationLink" placeholder="یا گوگل میپ لنک یہاں ڈالیں">
+            </div>
+            <div class="form-group">
+                <label>تصاویر (اختیاری، زیادہ سے زیادہ 3)</label>
+                <input type="file" id="images" accept="image/*" multiple>
+                <div class="info-text">آپ تصویر نہ بھی ڈالیں تو بھی شکایت جمع ہو جائے گی۔</div>
+            </div>
+            <div class="form-group">
+                <label>ویڈیو (اختیاری، زیادہ سے زیادہ 50MB)</label>
+                <input type="file" id="video" accept="video/*">
+            </div>
+            <div class="flex-btns">
+                <button type="submit">✅ شکایت جمع کریں</button>
+                <button type="button" id="gmailBtn" class="btn-secondary">✉️ Gmail پر بھیجیں</button>
+            </div>
+        </form>
+        <div id="formMessage"></div>
+    </div>
+
+    <!-- اسٹیٹس چیک -->
+    <h2>🔍 شکایت کی اسٹیٹس چیک کریں</h2>
+    <div class="form-group">
+        <label>ٹریکنگ آئی ڈی</label>
+        <input type="text" id="trackingIdCheck" placeholder="مثلاً: SLG-123456">
+        <button id="checkStatusBtn" class="btn-outline" style="margin-top: 8px;">اسٹیٹس دیکھیں</button>
+    </div>
+    <div id="statusResult"></div>
+
+    <!-- ایڈمن پینل (پاس ورڈ سے محفوظ) -->
+    <div class="admin-section">
+        <h3>🔐 ایڈمن پینل (کونسلر / عملہ)</h3>
+        <div id="adminLogin">
+            <input type="password" id="adminPass" placeholder="پاس ورڈ">
+            <button id="adminLoginBtn">داخل ہوں</button>
+            <div class="info-text">پاس ورڈ: <strong>admin123</strong> (صرف نمائش کے لیے)</div>
+        </div>
+        <div id="adminPanel" style="display: none;">
+            <h4>تمام شکایات</h4>
+            <div id="complaintsList"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ========== EmailJS کنفیگریشن (آپ کو یہ تبدیل کرنا ہے) ==========
+    const EMAILJS_USER_ID = "YOUR_EMAILJS_USER_ID";      // EmailJS Public Key
+    const EMAILJS_SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID"; // EmailJS Service ID
+    const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID"; // EmailJS Template ID
+    const ADMIN_EMAIL = "raheemsariouae@gmail.com";      // آپ کا ای میل
+
+    // EmailJS initialize
+    emailjs.init(EMAILJS_USER_ID);
+
+    // ********** DATA STORAGE **********
+    let complaints = [];
+
+    function loadData() {
+        const stored = localStorage.getItem('slg_complaints');
+        if(stored) {
+            complaints = JSON.parse(stored);
+        } else {
+            complaints = [];
+        }
+    }
+
+    function saveData() {
+        localStorage.setItem('slg_complaints', JSON.stringify(complaints));
+    }
+
+    function generateTrackingId() {
+        return 'SLG-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
+    }
+
+    // ای میل بھیجنے کا فنکشن
+    async function sendEmail(complaintData, toUserEmail = null) {
+        try {
+            // پہلے ایڈمن کو ای میل
+            const adminParams = {
+                to_email: ADMIN_EMAIL,
+                name: complaintData.name,
+                phone: complaintData.phone,
+                email: complaintData.userEmail || "نہیں دی گئی",
+                address: complaintData.address,
+                category: complaintData.category,
+                description: complaintData.description,
+                locationLink: complaintData.locationLink || "نہیں دی گئی",
+                trackingId: complaintData.trackingId
+            };
+            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, adminParams);
+            console.log("Admin email sent");
+
+            // اگر صارف نے ای میل دی ہے تو اسے کاپی بھیجیں
+            if(toUserEmail && toUserEmail.trim() !== "") {
+                const userParams = {
+                    to_email: toUserEmail,
+                    name: complaintData.name,
+                    phone: complaintData.phone,
+                    email: complaintData.userEmail,
+                    address: complaintData.address,
+                    category: complaintData.category,
+                    description: complaintData.description,
+                    locationLink: complaintData.locationLink || "نہیں دی گئی",
+                    trackingId: complaintData.trackingId
+                };
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, userParams);
+                console.log("User copy sent");
+            }
+            return true;
+        } catch (error) {
+            console.error("Email send failed", error);
+            return false;
+        }
+    }
+
+    // شکایت جمع کرنا
+    document.getElementById('complaintForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const category = document.getElementById('category').value;
+        const description = document.getElementById('description').value.trim();
+        let locationLink = document.getElementById('locationLink').value.trim();
+        const imagesFiles = document.getElementById('images').files;
+        const videoFile = document.getElementById('video').files[0];
+
+        if(!name || !phone || !address || !category || !description) {
+            showMessage('formMessage', 'براہ کرم تمام ضروری فیلڈز بھریں۔', 'error');
+            return;
+        }
+
+        const trackingId = generateTrackingId();
+        const now = new Date().toLocaleString('ur-PK');
+
+        let imageNames = [];
+        for(let i=0; i<imagesFiles.length; i++) {
+            imageNames.push(imagesFiles[i].name);
+        }
+        let videoName = videoFile ? videoFile.name : null;
+
+        const newComplaint = {
+            id: trackingId,
+            name, phone, email, address, category, description, locationLink,
+            images: imageNames,
+            video: videoName,
+            status: 'موصول',
+            reply: '',
+            createdAt: now,
+            updatedAt: now
+        };
+        complaints.unshift(newComplaint);
+        saveData();
+
+        // ای میل بھیجیں
+        const emailData = {
+            trackingId: trackingId,
+            name: name,
+            phone: phone,
+            userEmail: email,
+            address: address,
+            category: category,
+            description: description,
+            locationLink: locationLink
+        };
+        const emailSent = await sendEmail(emailData, email);
+
+        // فارم صاف کریں
+        document.getElementById('name').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('address').value = '';
+        document.getElementById('category').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('locationLink').value = '';
+        document.getElementById('images').value = '';
+        document.getElementById('video').value = '';
+
+        let msg = `شکایت کامیابی سے جمع ہو گئی۔ آپ کا ٹریکنگ نمبر: ${trackingId}`;
+        if(emailSent) msg += `\nاطلاعات ای میل پر بھیج دی گئیں۔`;
+        else msg += `\nای میل بھیجنے میں خرابی ہوئی، لیکن شکایت محفوظ ہو گئی۔`;
+        showMessage('formMessage', msg, 'success');
+    });
+
+    // Gmail پر بھیجیں (پہلے کی طرح)
+    document.getElementById('gmailBtn').addEventListener('click', function() {
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const category = document.getElementById('category').value;
+        const description = document.getElementById('description').value.trim();
+        const locationLink = document.getElementById('locationLink').value.trim();
+
+        if(!name || !phone || !address || !category || !description) {
+            showMessage('formMessage', 'پہلے ضروری فیلڈز بھریں تاکہ جی میل پر بھیج سکیں۔', 'error');
+            return;
+        }
+
+        const subject = encodeURIComponent(`شکایت: ${category} - ${name}`);
+        const body = encodeURIComponent(
+            `نام: ${name}\nفون: ${phone}\nای میل: ${email}\nعلاقہ: ${address}\nمسئلہ کی قسم: ${category}\nتفصیل:\n${description}\nلوکیشن لنک: ${locationLink || 'نہیں دی گئی'}`
+        );
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${ADMIN_EMAIL}&su=${subject}&body=${body}`, '_blank');
+        showMessage('formMessage', 'جی میل کا صفحہ کھل گیا ہے۔ وہاں بھیجنے کے لیے بھیجیں بٹن دبائیں۔', 'success');
+    });
+
+    // خودکار لوکیشن
+    document.getElementById('getLocationBtn').addEventListener('click', function() {
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                const lat = pos.coords.latitude;
+                const lng = pos.coords.longitude;
+                const mapsLink = `https://maps.google.com/?q=${lat},${lng}`;
+                document.getElementById('locationLink').value = mapsLink;
+                showMessage('formMessage', 'لوکیشن لنک خودکار بھر دیا گیا۔', 'success');
+            }, function(err) {
+                showMessage('formMessage', 'لوکیشن نہیں مل سکی۔ براہ کرم دستی طور پر لنک ڈالیں۔', 'error');
+            });
+        } else {
+            showMessage('formMessage', 'آپ کا براؤزر لوکیشن سپورٹ نہیں کرتا۔', 'error');
+        }
+    });
+
+    // اسٹیٹس چیک (پہلے جیسا)
+    document.getElementById('checkStatusBtn').addEventListener('click', function() {
+        const trackingId = document.getElementById('trackingIdCheck').value.trim();
+        if(!trackingId) {
+            document.getElementById('statusResult').innerHTML = '<div class="error">براہ کرم ٹریکنگ آئی ڈی درج کریں۔</div>';
+            return;
+        }
+        const complaint = complaints.find(c => c.id === trackingId);
+        if(!complaint) {
+            document.getElementById('statusResult').innerHTML = '<div class="error">یہ ٹریکنگ آئی ڈی موجود نہیں۔</div>';
+            return;
+        }
+        const statusClass = complaint.status === 'حل شدہ' ? 'status-resolved' : '';
+        let replyHtml = complaint.reply ? `<p><strong>⚡ جواب / کارروائی:</strong> ${complaint.reply}</p>` : '<p><em>ابھی کوئی جواب نہیں دیا گیا۔</em></p>';
+        document.getElementById('statusResult').innerHTML = `
+            <div class="tracking-card">
+                <p><strong>ٹریکنگ آئی ڈی:</strong> ${complaint.id}</p>
+                <p><strong>مسئلہ:</strong> ${complaint.category}</p>
+                <p><strong>تفصیل:</strong> ${complaint.description}</p>
+                <p><strong>علاقہ:</strong> ${complaint.address}</p>
+                <p><span class="status-badge ${statusClass}">${complaint.status}</span></p>
+                ${replyHtml}
+                <p><small>درج کردہ: ${complaint.createdAt}</small></p>
+            </div>
+        `;
+    });
+
+    // ایڈمن پینل (پہلے جیسا)
+    document.getElementById('adminLoginBtn').addEventListener('click', function() {
+        const pass = document.getElementById('adminPass').value;
+        if(pass === 'admin123') {
+            document.getElementById('adminLogin').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            renderAdminComplaints();
+        } else {
+            alert('غلط پاس ورڈ');
+        }
+    });
+
+    function renderAdminComplaints() {
+        const container = document.getElementById('complaintsList');
+        if(complaints.length === 0) {
+            container.innerHTML = '<p>کوئی شکایت موجود نہیں۔</p>';
+            return;
+        }
+        let html = '';
+        complaints.forEach((comp, idx) => {
+            html += `
+                <div class="complaint-item">
+                    <p><strong>ID:</strong> ${comp.id}</p>
+                    <p><strong>نام:</strong> ${comp.name} | <strong>فون:</strong> ${comp.phone} | <strong>ای میل:</strong> ${comp.email || 'نہیں'}</p>
+                    <p><strong>علاقہ:</strong> ${comp.address}</p>
+                    <p><strong>قسم:</strong> ${comp.category}</p>
+                    <p><strong>تفصیل:</strong> ${comp.description}</p>
+                    <p><strong>لوکیشن:</strong> ${comp.locationLink ? `<a href="${comp.locationLink}" target="_blank">نقشہ دیکھیں</a>` : 'نہیں'}</p>
+                    <p><strong>تصاویر:</strong> ${comp.images.length ? comp.images.join(', ') : 'کوئی نہیں'}</p>
+                    <p><strong>ویڈیو:</strong> ${comp.video || 'کوئی نہیں'}</p>
+                    <p><strong>اسٹیٹس:</strong> 
+                        <select id="statusSelect_${idx}">
+                            <option ${comp.status === 'موصول' ? 'selected' : ''}>موصول</option>
+                            <option ${comp.status === 'زیر کارروائی' ? 'selected' : ''}>زیر کارروائی</option>
+                            <option ${comp.status === 'حل شدہ' ? 'selected' : ''}>حل شدہ</option>
+                        </select>
+                    </p>
+                    <p><strong>موجودہ جواب:</strong> ${comp.reply || 'ابھی کوئی جواب نہیں'}</p>
+                    <textarea id="reply_${idx}" placeholder="شکایت کا جواب یا کارروائی لکھیں..." rows="2" style="width:100%;">${comp.reply || ''}</textarea>
+                    <button onclick="updateComplaint(${idx})" style="margin-top:8px;">💾 اپ ڈیٹ کریں</button>
+                </div>
+                <hr>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    window.updateComplaint = function(index) {
+        const newStatus = document.getElementById(`statusSelect_${index}`).value;
+        const newReply = document.getElementById(`reply_${index}`).value;
+        complaints[index].status = newStatus;
+        complaints[index].reply = newReply;
+        complaints[index].updatedAt = new Date().toLocaleString('ur-PK');
+        saveData();
+        renderAdminComplaints();
+        alert('شکایت اپ ڈیٹ کر دی گئی۔');
+    };
+
+    function showMessage(containerId, msg, type) {
+        const div = document.getElementById(containerId);
+        div.innerHTML = `<div class="${type === 'error' ? 'error' : 'success'}">${msg}</div>`;
+        setTimeout(() => { div.innerHTML = ''; }, 5000);
+    }
+
+    loadData();
+    if(complaints.length === 0) saveData();
+</script>
+</body>
+</html>
