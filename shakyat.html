@@ -1,179 +1,87 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>شکایت درج کریں – عبدالرحیم ساریو</title>
+  <title>شکایت – کونسلر عبدالرحیم ساریو</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Noto Nastaliq Urdu',serif;background:#f0f4f0;color:#111;direction:rtl}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    nav{background:#1a5c2a;padding:13px 16px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:6px;border-bottom:3px solid #c8a227}
+    nav a{color:#fff;text-decoration:none;font-size:14px;font-weight:bold;padding:4px 6px;border-radius:4px}
 
-    body {
-      font-family: 'Noto Nastaliq Urdu', serif;
-      background: #f0f4f0;
-      color: #1a1a1a;
-      direction: rtl;
-    }
+    .wrap{max-width:680px;margin:0 auto;padding:18px 14px 50px}
+    h1{text-align:center;font-size:24px;color:#1a5c2a;margin:20px 0 6px}
+    .gold-line{border:none;border-top:2px solid #c8a227;margin:6px 0 18px}
 
-    nav {
-      background: #1a5c2a;
-      padding: 14px 20px;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 8px;
-      border-bottom: 3px solid #c8a227;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: bold;
-      padding: 4px 8px;
-      border-radius: 4px;
-    }
+    .card{background:#fff;border:1.5px solid #c8e8c8;border-radius:14px;padding:20px 16px 16px;margin-bottom:14px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+    .card.hi{background:#edf7ed;border-color:#1a5c2a}
+    .card .ico{font-size:42px;margin-bottom:6px}
+    .card h2{font-size:20px;color:#1a5c2a;margin-bottom:4px}
+    .card p{font-size:12px;color:#555;margin-bottom:12px}
 
-    .container { max-width: 700px; margin: 0 auto; padding: 20px 16px 40px; }
+    .btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .bF{background:#1a3a8c;color:#fff;border:none;border-radius:8px;padding:11px 20px;font-size:15px;font-family:inherit;cursor:pointer}
+    .bW{background:#25d366;color:#fff;border:none;border-radius:8px;padding:11px 20px;font-size:15px;font-family:inherit;cursor:pointer}
 
-    h1 {
-      text-align: center;
-      font-size: 26px;
-      color: #1a5c2a;
-      margin: 24px 0 8px;
-    }
-    .divider { border: none; border-top: 2px solid #c8a227; margin: 8px 0 20px; }
+    .iform{display:none;background:#f7fbf7;border:1.5px solid #1a5c2a;border-radius:12px;padding:16px;margin-top:14px;text-align:right}
+    .iform.open{display:block}
 
-    .card {
-      background: #fff;
-      border: 1.5px solid #c8e8c8;
-      border-radius: 14px;
-      padding: 22px 18px 18px;
-      margin-bottom: 16px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .card.active { background: #edf7ed; border-color: #1a5c2a; }
-    .card .icon { font-size: 44px; margin-bottom: 8px; }
-    .card h2 { font-size: 22px; color: #1a5c2a; margin-bottom: 4px; }
-    .card p  { font-size: 13px; color: #555; margin-bottom: 14px; }
+    .fg{margin-bottom:13px}
+    .fg label{display:block;font-size:13px;color:#333;margin-bottom:4px;font-weight:bold}
+    .fg input,.fg textarea{width:100%;padding:9px 11px;border:1.5px solid #aaa;border-radius:8px;font-family:inherit;font-size:13px;direction:rtl;background:#fff}
+    .fg textarea{height:75px;resize:vertical}
 
-    .btn-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    /* ── لوکیشن بکس ── */
+    .locbox{background:#e8f5e9;border:1.5px solid #1a5c2a;border-radius:10px;padding:12px;margin-bottom:13px}
+    .locbox > label{font-size:13px;font-weight:bold;color:#1a5c2a;display:block;margin-bottom:8px}
 
-    .btn-form {
-      background: #1a3a8c;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 22px;
-      font-size: 16px;
-      font-family: inherit;
-      cursor: pointer;
-    }
-    .btn-wa {
-      background: #25d366;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 22px;
-      font-size: 16px;
-      font-family: inherit;
-      cursor: pointer;
-    }
+    .bLoc{background:#1a5c2a;color:#fff;border:none;border-radius:8px;padding:10px;font-size:14px;font-family:inherit;cursor:pointer;width:100%;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px}
+    .bLoc:active{background:#144820}
 
-    .inline-form {
-      display: none;
-      background: #f9fbf9;
-      border: 1.5px solid #1a5c2a;
-      border-radius: 12px;
-      padding: 18px;
-      margin-top: 16px;
-      text-align: right;
-    }
-    .inline-form.open { display: block; }
+    .loc-status{font-size:12px;color:#444;display:block;margin-bottom:7px;text-align:center;min-height:18px}
+    .loc-val{width:100%;padding:8px 10px;border:1.5px solid #aaa;border-radius:7px;font-size:11px;background:#fff;direction:ltr;margin-bottom:8px}
 
-    .form-group { margin-bottom: 14px; }
-    .form-group label { display: block; font-size: 14px; color: #333; margin-bottom: 5px; font-weight: bold; }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1.5px solid #aaa;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 14px;
-      direction: rtl;
-      background: #fff;
-    }
-    .form-group textarea { height: 80px; resize: vertical; }
+    .loc-map-btn{display:none;background:#4285f4;color:#fff;border:none;border-radius:8px;padding:8px;font-size:12px;font-family:inherit;cursor:pointer;width:100%;margin-bottom:8px;text-decoration:none;text-align:center}
 
-    .loc-box {
-      background: #edf7ed;
-      border: 1.5px solid #1a5c2a;
-      border-radius: 10px;
-      padding: 12px;
-      margin-bottom: 14px;
-    }
-    .loc-box label { font-size: 14px; font-weight: bold; color: #333; display: block; margin-bottom: 8px; }
-    .btn-loc {
-      background: #1a5c2a;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 18px;
-      font-size: 14px;
-      font-family: inherit;
-      cursor: pointer;
-      margin-bottom: 8px;
-    }
-    .loc-status { font-size: 12px; color: #666; display: block; margin-bottom: 6px; }
-    .loc-output { width: 100%; padding: 8px 10px; border: 1.5px solid #aaa; border-radius: 7px; font-size: 12px; background: #fff; direction: ltr; }
+    .manual-loc{border-top:1px dashed #aaa;padding-top:8px;margin-top:4px}
+    .manual-loc label{font-size:12px;color:#666;display:block;margin-bottom:4px}
+    .manual-loc input{width:100%;padding:7px 10px;border:1.5px solid #ccc;border-radius:7px;font-size:12px;background:#fff;direction:ltr}
+    .manual-loc p{font-size:10px;color:#888;margin-top:4px;text-align:center}
 
-    .photo-label {
-      display: block;
-      background: #fff3e0;
-      border: 2px dashed #e67e22;
-      border-radius: 10px;
-      padding: 14px;
-      text-align: center;
-      cursor: pointer;
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 14px;
-    }
-    .photo-label input { display: none; }
+    /* ── میڈیا ── */
+    .media-box{background:#fff8e1;border:2px dashed #e67e22;border-radius:10px;padding:14px;margin-bottom:13px}
+    .media-box > label{display:block;font-size:13px;font-weight:bold;color:#333;margin-bottom:10px}
 
-    .submit-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-    .btn-submit-wa {
-      flex: 1;
-      background: #25d366;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 13px;
-      font-size: 15px;
-      font-family: inherit;
-      cursor: pointer;
-    }
-    .btn-submit-email {
-      flex: 1;
-      background: #c0392b;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 13px;
-      font-size: 15px;
-      font-family: inherit;
-      cursor: pointer;
-    }
-    .submit-note { font-size: 12px; color: #555; margin-top: 8px; text-align: center; }
+    .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+    .pslot{position:relative;height:95px;background:#eee;border-radius:8px;overflow:hidden;cursor:pointer;display:flex;align-items:center;justify-content:center;border:2px dashed #ccc}
+    .pslot:active{opacity:.8}
+    .pslot .ico2{font-size:30px;pointer-events:none}
+    .pslot img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0}
+    .pslot input{display:none}
+    .stamp{position:absolute;bottom:2px;left:2px;right:2px;background:rgba(0,0,0,.65);color:#fff;font-size:7px;padding:2px 3px;border-radius:3px;direction:ltr;font-family:monospace;text-align:center}
 
-    .labour-heading { font-size: 22px; color: #1a5c2a; text-align: center; margin: 30px 0 10px; }
-    .labour-card { background: #1a5c2a; color: #fff; border-radius: 12px; padding: 20px; margin-bottom: 12px; }
-    .labour-card h3 { color: #f5c518; font-size: 18px; margin-bottom: 8px; }
-    .labour-card p  { font-size: 13px; line-height: 1.8; }
+    .vid-btn{background:#e67e22;color:#fff;border:none;border-radius:8px;padding:10px;font-size:13px;font-family:inherit;cursor:pointer;width:100%;margin-top:4px}
+    video.vp{width:100%;border-radius:8px;margin-top:6px;display:none;max-height:180px}
+    .vid-info{font-size:11px;color:#555;text-align:center;margin-top:4px}
 
-    .footer-note { text-align: center; font-size: 12px; color: #777; margin-top: 30px; padding-top: 12px; border-top: 1px solid #ddd; }
+    /* ── Submit ── */
+    .srow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .bSW{flex:1;background:#25d366;color:#fff;border:none;border-radius:8px;padding:12px;font-size:14px;font-family:inherit;cursor:pointer}
+    .bSE{flex:1;background:#c0392b;color:#fff;border:none;border-radius:8px;padding:12px;font-size:14px;font-family:inherit;cursor:pointer}
+    .snote{font-size:11px;color:#555;text-align:center;margin-top:6px}
+    .snote.ora{color:#e67e22}
+
+    .lh{font-size:20px;color:#1a5c2a;text-align:center;margin:26px 0 8px}
+    .lcard{background:#1a5c2a;color:#fff;border-radius:12px;padding:18px;margin-bottom:12px}
+    .lcard h3{color:#f5c518;font-size:17px;margin-bottom:7px}
+    .lcard p{font-size:12px;line-height:1.9}
+    .footer{text-align:center;font-size:11px;color:#777;margin-top:28px;padding-top:10px;border-top:1px solid #ddd}
+
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .spin{display:inline-block;width:13px;height:13px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle}
   </style>
 </head>
 <body>
@@ -181,248 +89,337 @@
 <nav>
   <a href="index.html">🏠 ہوم</a>
   <a href="shakyat.html">📋 شکایت</a>
-  <a href="mazdoor.html">👷 مزدور حقوق</a>
+  <a href="mazdoor.html">👷 مزدور</a>
   <a href="rti.html">📄 RTI</a>
-  <a href="qanooni.html">⚖️ قانونی حقوق</a>
+  <a href="qanooni.html">⚖️ قانون</a>
   <a href="rabta.html">📞 رابطہ</a>
 </nav>
 
-<div class="container">
-
+<div class="wrap">
   <h1>⚡ فوری شکایت – نوع منتخب کریں</h1>
-  <hr class="divider"/>
+  <hr class="gold-line"/>
 
-  <div class="card active">
-    <div class="icon">🚧</div>
-    <h2>سڑک / گلی</h2>
-    <p>ٹوٹی سڑک، گڑھے، خراب راستہ</p>
+  <div class="card hi">
+    <div class="ico">🚧</div><h2>سڑک / گلی</h2><p>ٹوٹی سڑک، گڑھے، خراب راستہ</p>
     <div class="btn-row">
-      <button class="btn-form" onclick="toggleForm('form-sadak','سڑک / گلی')">📋 فارم</button>
-      <button class="btn-wa" onclick="directWA('سڑک / گلی')">📱 واٹس ایپ</button>
+      <button class="bF" onclick="openForm('sadak','سڑک / گلی')">📋 فارم</button>
+      <button class="bW" onclick="quickWA('سڑک / گلی')">📱 واٹس ایپ</button>
     </div>
-    <div class="inline-form" id="form-sadak"></div>
+    <div class="iform" id="sadak"></div>
   </div>
 
   <div class="card">
-    <div class="icon">🚽</div>
-    <h2>سیوریج / گٹر</h2>
-    <p>بند گٹر، گندا پانی، بدبو</p>
+    <div class="ico">🚽</div><h2>سیوریج / گٹر</h2><p>بند گٹر، گندا پانی، بدبو</p>
     <div class="btn-row">
-      <button class="btn-form" onclick="toggleForm('form-sewage','سیوریج / گٹر')">📋 فارم</button>
-      <button class="btn-wa" onclick="directWA('سیوریج / گٹر')">📱 واٹس ایپ</button>
+      <button class="bF" onclick="openForm('sewage','سیوریج / گٹر')">📋 فارم</button>
+      <button class="bW" onclick="quickWA('سیوریج / گٹر')">📱 واٹس ایپ</button>
     </div>
-    <div class="inline-form" id="form-sewage"></div>
+    <div class="iform" id="sewage"></div>
   </div>
 
   <div class="card">
-    <div class="icon">🗑️</div>
-    <h2>کچرا / صفائی</h2>
-    <p>کچرے کا ڈھیر، صفائی نہ ہونا</p>
+    <div class="ico">🗑️</div><h2>کچرا / صفائی</h2><p>کچرے کا ڈھیر، صفائی نہ ہونا</p>
     <div class="btn-row">
-      <button class="btn-form" onclick="toggleForm('form-kachra','کچرا / صفائی')">📋 فارم</button>
-      <button class="btn-wa" onclick="directWA('کچرا / صفائی')">📱 واٹس ایپ</button>
+      <button class="bF" onclick="openForm('kachra','کچرا / صفائی')">📋 فارم</button>
+      <button class="bW" onclick="quickWA('کچرا / صفائی')">📱 واٹس ایپ</button>
     </div>
-    <div class="inline-form" id="form-kachra"></div>
+    <div class="iform" id="kachra"></div>
   </div>
 
   <div class="card">
-    <div class="icon">💧</div>
-    <h2>پینے کا پانی</h2>
-    <p>پانی بند، گندا پانی، پائپ لیک</p>
+    <div class="ico">💧</div><h2>پینے کا پانی</h2><p>پانی بند، گندا پانی، پائپ لیک</p>
     <div class="btn-row">
-      <button class="btn-form" onclick="toggleForm('form-pani','پینے کا پانی')">📋 فارم</button>
-      <button class="btn-wa" onclick="directWA('پینے کا پانی')">📱 واٹس ایپ</button>
+      <button class="bF" onclick="openForm('pani','پینے کا پانی')">📋 فارم</button>
+      <button class="bW" onclick="quickWA('پینے کا پانی')">📱 واٹس ایپ</button>
     </div>
-    <div class="inline-form" id="form-pani"></div>
+    <div class="iform" id="pani"></div>
   </div>
 
   <div class="card">
-    <div class="icon">💡</div>
-    <h2>روشنی / بجلی</h2>
-    <p>سٹریٹ لائٹ خراب، اندھیرا</p>
+    <div class="ico">💡</div><h2>روشنی / بجلی</h2><p>سٹریٹ لائٹ خراب، اندھیرا</p>
     <div class="btn-row">
-      <button class="btn-form" onclick="toggleForm('form-light','روشنی / بجلی')">📋 فارم</button>
-      <button class="btn-wa" onclick="directWA('روشنی / بجلی')">📱 واٹس ایپ</button>
+      <button class="bF" onclick="openForm('light','روشنی / بجلی')">📋 فارم</button>
+      <button class="bW" onclick="quickWA('روشنی / بجلی')">📱 واٹس ایپ</button>
     </div>
-    <div class="inline-form" id="form-light"></div>
+    <div class="iform" id="light"></div>
   </div>
 
   <div class="card">
-    <div class="icon">📌</div>
-    <h2>دیگر مسئلہ</h2>
-    <p>کوئی اور شکایت درج کریں</p>
+    <div class="ico">📌</div><h2>دیگر مسئلہ</h2><p>کوئی اور شکایت</p>
     <div class="btn-row">
-      <button class="btn-form" onclick="toggleForm('form-other','دیگر مسئلہ')">📋 فارم</button>
-      <button class="btn-wa" onclick="directWA('دیگر مسئلہ')">📱 واٹس ایپ</button>
+      <button class="bF" onclick="openForm('other','دیگر مسئلہ')">📋 فارم</button>
+      <button class="bW" onclick="quickWA('دیگر مسئلہ')">📱 واٹس ایپ</button>
     </div>
-    <div class="inline-form" id="form-other"></div>
+    <div class="iform" id="other"></div>
   </div>
 
-  <h2 class="labour-heading">🏗️ مزدور حقوق – لیبر سیکشن</h2>
-  <hr class="divider"/>
-
-  <div class="labour-card">
+  <h2 class="lh">🏗️ مزدور حقوق – لیبر سیکشن</h2>
+  <hr class="gold-line"/>
+  <div class="lcard">
     <h3>🔨 آپ کے مزدور حقوق</h3>
-    <p>سندھ لیبر پالیسی کے تحت ہر فیکٹری مزدور کو کم از کم اجرت، EOBI، اور محفوظ ماحول کا حق ہے۔ اگر آپ کا کوئی حق چھینا جا رہا ہے تو فوری شکایت کریں۔</p>
+    <p>سندھ لیبر پالیسی کے تحت ہر فیکٹری مزدور کو کم از کم اجرت، EOBI، اور محفوظ ماحول کا حق ہے۔ فوری شکایت کریں۔</p>
   </div>
-
   <div class="card">
-    <div class="icon">⚒️</div>
-    <h2>مزدور شکایت</h2>
-    <p>تنخواہ نہ ملنا، نکالا جانا، EOBI نہ ہونا</p>
+    <div class="ico">⚒️</div><h2>مزدور شکایت</h2><p>تنخواہ، نکالا جانا، EOBI</p>
     <div class="btn-row">
-      <button class="btn-form" onclick="toggleForm('form-labour','مزدور شکایت')">📋 فارم</button>
-      <button class="btn-wa" onclick="directWA('مزدور شکایت')">📱 واٹس ایپ</button>
+      <button class="bF" onclick="openForm('labour','مزدور شکایت')">📋 فارم</button>
+      <button class="bW" onclick="quickWA('مزدور شکایت')">📱 واٹس ایپ</button>
     </div>
-    <div class="inline-form" id="form-labour"></div>
+    <div class="iform" id="labour"></div>
   </div>
 
-  <div class="footer-note">
-    © کونسلر عبدالرحیم ساریو – وارڈ سہراب گوتھ، کراچی
-  </div>
-
+  <div class="footer">© کونسلر عبدالرحیم ساریو – سہراب گوتھ، کراچی</div>
 </div>
 
 <script>
-  // =========================================================
-  // ✅ آپ کے دونوں واٹس ایپ نمبر (92 سے شروع، 0 کے بغیر)
-  var WA1   = "92311222114";           //  2221014-0311 : پہلا نمبر  
-  var WA2   = "923329191009";           // 9191009-0332 : دوسرا نمبر 
-  // ✅ آپ کی ای میل
-  var EMAIL = "raheemsariouae@gmail.com";   // ← یہاں اپنی ای میل لکھیں
-  // =========================================================
+/* ══════════════════════════════
+   آپ کی معلومات
+══════════════════════════════ */
+var WA1   = "923112221014";
+var WA2   = "923329191009";
+var EMAIL = "raheemsariouae@gmail.com";
+/* ══════════════════════════════ */
 
-  // براہ راست واٹس ایپ (بغیر فارم بھرے)
-  function directWA(title) {
-    var msg = "السلام علیکم – کونسلر صاحب\n" +
-              "شکایت کی قسم: " + title + "\n" +
-              "علاقہ: سہراب گوتھ\n" +
-              "براہ کرم توجہ فرمائیں۔";
-    openBothWA(msg);
+function dt() {
+  var d = new Date(), p = function(n){ return n<10?"0"+n:n; };
+  return p(d.getDate())+"/"+p(d.getMonth()+1)+"/"+d.getFullYear()
+       +" "+p(d.getHours())+":"+p(d.getMinutes())+":"+p(d.getSeconds());
+}
+
+function quickWA(title) {
+  sendBothWA("السلام علیکم – کونسلر صاحب\n🔔 شکایت: "+title+"\n📅 "+dt()+"\nعلاقہ: سہراب گوتھ\nتوجہ فرمائیں۔");
+}
+
+function sendBothWA(msg) {
+  var t = encodeURIComponent(msg);
+  window.open("https://wa.me/"+WA1+"?text="+t,"_blank");
+  setTimeout(function(){ window.open("https://wa.me/"+WA2+"?text="+t,"_blank"); }, 1200);
+}
+
+/* ══ فارم بنائیں ══ */
+function buildForm(fid, title) {
+  return `
+<div style="font-size:15px;font-weight:bold;color:#1a5c2a;margin-bottom:12px;">📋 ${title}</div>
+
+<div class="fg"><label>📅 تاریخ / وقت (خودکار)</label>
+<input type="text" id="${fid}-dt" value="${dt()}" readonly style="background:#f5f5f5;font-family:monospace;direction:ltr"/></div>
+
+<div class="fg"><label>آپ کا نام *</label>
+<input type="text" id="${fid}-name" placeholder="مثلاً: محمد علی"/></div>
+
+<div class="fg"><label>رابطہ نمبر *</label>
+<input type="tel" id="${fid}-phone" placeholder="03XX-XXXXXXX" dir="ltr"/></div>
+
+<div class="fg"><label>علاقہ / گلی *</label>
+<input type="text" id="${fid}-area" placeholder="مثلاً: گلی نمبر 5، سہراب گوتھ"/></div>
+
+<div class="fg"><label>مسئلے کی تفصیل *</label>
+<textarea id="${fid}-detail" placeholder="یہاں مسئلہ تفصیل سے لکھیں..."></textarea></div>
+
+<!-- لوکیشن -->
+<div class="locbox">
+  <label>📍 گوگل میپ لوکیشن</label>
+
+  <button class="bLoc" id="${fid}-locbtn" onclick="getGPS('${fid}')">
+    📍 ابھی لوکیشن لیں
+  </button>
+
+  <span class="loc-status" id="${fid}-ls"></span>
+  <input class="loc-val" type="text" id="${fid}-lo" placeholder="لوکیشن یہاں آئے گی (GPS سے خودکار)" readonly/>
+
+  <a class="loc-map-btn" id="${fid}-mapbtn" href="#" target="_blank">🗺️ گوگل میپ پر دیکھیں</a>
+
+  <!-- Manual fallback -->
+  <div class="manual-loc">
+    <label>یا گوگل میپ لنک خود paste کریں (اختیاری):</label>
+    <input type="text" id="${fid}-manual" placeholder="https://maps.google.com/... یا کوئی بھی پتہ" dir="ltr"
+           oninput="onManual('${fid}')"/>
+    <p>👆 اگر GPS کام نہ کرے تو گوگل میپ کھول کر لنک copy کریں یہاں paste کریں</p>
+  </div>
+</div>
+
+<!-- تصاویر -->
+<div class="media-box">
+  <label>📸 تین تصاویر (ضروری – ہر خانے پر کلک کریں)</label>
+  <div class="photo-grid">
+    <div class="pslot" onclick="document.getElementById('${fid}-p1').click()">
+      <span class="ico2">📷</span>
+      <img id="${fid}-p1i" src="" alt="" style="display:none"/>
+      <span class="stamp" id="${fid}-p1s"></span>
+      <input type="file" id="${fid}-p1" accept="image/*" capture="environment"
+             onchange="loadPic(this,'${fid}-p1i','${fid}-p1s')"/>
+    </div>
+    <div class="pslot" onclick="document.getElementById('${fid}-p2').click()">
+      <span class="ico2">📷</span>
+      <img id="${fid}-p2i" src="" alt="" style="display:none"/>
+      <span class="stamp" id="${fid}-p2s"></span>
+      <input type="file" id="${fid}-p2" accept="image/*" capture="environment"
+             onchange="loadPic(this,'${fid}-p2i','${fid}-p2s')"/>
+    </div>
+    <div class="pslot" onclick="document.getElementById('${fid}-p3').click()">
+      <span class="ico2">📷</span>
+      <img id="${fid}-p3i" src="" alt="" style="display:none"/>
+      <span class="stamp" id="${fid}-p3s"></span>
+      <input type="file" id="${fid}-p3" accept="image/*" capture="environment"
+             onchange="loadPic(this,'${fid}-p3i','${fid}-p3s')"/>
+    </div>
+  </div>
+
+  <!-- ویڈیو -->
+  <label style="font-size:12px;font-weight:bold;color:#555;display:block;margin-top:4px;margin-bottom:5px;">🎥 ویڈیو (زیادہ سے زیادہ 100MB)</label>
+  <button class="vid-btn" onclick="document.getElementById('${fid}-vid').click()">🎥 ویڈیو ریکارڈ / چنیں</button>
+  <input type="file" id="${fid}-vid" accept="video/*" capture="camcorder" style="display:none"
+         onchange="loadVid(this,'${fid}')"/>
+  <video class="vp" id="${fid}-vp" controls></video>
+  <div class="vid-info" id="${fid}-vi"></div>
+</div>
+
+<!-- بھیجیں -->
+<div class="srow">
+  <button class="bSW" onclick="doWA('${fid}','${title}')">📱 واٹس ایپ بھیجیں</button>
+  <button class="bSE" onclick="doEmail('${fid}','${title}')">✉️ ای میل بھیجیں</button>
+</div>
+<p class="snote">✅ واٹس ایپ دونوں نمبروں پر جائے گا</p>
+<p class="snote ora">⚠️ تصاویر/ویڈیو واٹس ایپ کھلنے کے بعد خود attach کریں</p>`;
+}
+
+function openForm(fid, title) {
+  var el = document.getElementById(fid);
+  if (!el) return;
+  if (!el.innerHTML.trim()) el.innerHTML = buildForm(fid, title);
+  if (el.classList.contains("open")) {
+    el.classList.remove("open");
+  } else {
+    document.querySelectorAll(".iform.open").forEach(function(f){ f.classList.remove("open"); });
+    el.classList.add("open");
+    setTimeout(function(){ el.scrollIntoView({behavior:"smooth",block:"start"}); }, 100);
+  }
+}
+
+/* ══ GPS ══ */
+function getGPS(fid) {
+  var ls  = document.getElementById(fid+"-ls");
+  var lo  = document.getElementById(fid+"-lo");
+  var btn = document.getElementById(fid+"-locbtn");
+  var mb  = document.getElementById(fid+"-mapbtn");
+
+  if (!navigator.geolocation) {
+    ls.textContent = "❌ GPS سپورٹ نہیں – نیچے لنک paste کریں";
+    return;
   }
 
-  // دونوں نمبروں پر میسج بھیجیں
-  function openBothWA(msg) {
-    var txt = encodeURIComponent(msg);
-    // پہلا نمبر فوری کھولیں
-    window.open("https://wa.me/" + WA1 + "?text=" + txt, "_blank");
-    // دوسرا نمبر 1.5 سیکنڈ بعد
-    setTimeout(function() {
-      window.open("https://wa.me/" + WA2 + "?text=" + txt, "_blank");
-    }, 1500);
+  ls.innerHTML  = "⏳ لوکیشن لی جا رہی ہے... <span class='spin'></span>";
+  if(btn) btn.textContent = "⏳ انتظار کریں...";
+
+  navigator.geolocation.getCurrentPosition(
+    function(pos) {
+      var lat = pos.coords.latitude.toFixed(6);
+      var lng = pos.coords.longitude.toFixed(6);
+      var url = "https://maps.google.com/maps?q="+lat+","+lng;
+      lo.value = "Lat:"+lat+"  Lng:"+lng+"  | "+url;
+      ls.textContent = "✅ لوکیشن مل گئی!";
+      if(btn) btn.textContent = "✅ مل گئی – دوبارہ لیں";
+      if(mb){ mb.style.display="block"; mb.href=url; }
+    },
+    function(err) {
+      var m = {
+        1:"⚠️ اجازت نہیں دی – Chrome میں: address bar → 🔒 → Location → Allow",
+        2:"⚠️ GPS سگنل نہیں – کھلی جگہ جا کر دوبارہ کوشش کریں",
+        3:"⚠️ وقت ختم – دوبارہ بٹن دبائیں"
+      };
+      ls.innerHTML = (m[err.code]||"❌ لوکیشن نہ مل سکی") + "<br><small>نیچے لنک paste کریں</small>";
+      if(btn) btn.textContent = "📍 دوبارہ کوشش کریں";
+    },
+    { enableHighAccuracy:true, timeout:15000, maximumAge:0 }
+  );
+}
+
+function onManual(fid) {
+  var manual = document.getElementById(fid+"-manual");
+  var lo     = document.getElementById(fid+"-lo");
+  if(manual && lo && manual.value.trim()) {
+    lo.value = manual.value.trim();
+    var ls = document.getElementById(fid+"-ls");
+    if(ls) ls.textContent = "✅ لوکیشن درج کر دی گئی";
   }
+}
 
-  // فارم بنائیں
-  function buildFormHTML(fid, title) {
-    return [
-      '<div style="font-size:16px;font-weight:bold;color:#1a5c2a;margin-bottom:12px;">📋 ', title, ' – شکایت فارم</div>',
+/* ══ تصویر ══ */
+function loadPic(inp, imgId, stId) {
+  if (!inp.files || !inp.files[0]) return;
+  var r = new FileReader();
+  r.onload = function(e) {
+    var img = document.getElementById(imgId);
+    var st  = document.getElementById(stId);
+    if(img){ img.src = e.target.result; img.style.display="block"; }
+    if(st) st.textContent = dt();
+  };
+  r.readAsDataURL(inp.files[0]);
+}
 
-      '<div class="form-group"><label>آپ کا نام *</label>',
-      '<input type="text" id="', fid, '-name" placeholder="مثلاً: محمد علی"/></div>',
-
-      '<div class="form-group"><label>رابطہ نمبر *</label>',
-      '<input type="tel" id="', fid, '-phone" placeholder="03XX-XXXXXXX" dir="ltr"/></div>',
-
-      '<div class="form-group"><label>علاقہ / گلی *</label>',
-      '<input type="text" id="', fid, '-area" placeholder="مثلاً: گلی نمبر 5"/></div>',
-
-      '<div class="form-group"><label>مسئلے کی تفصیل *</label>',
-      '<textarea id="', fid, '-detail" placeholder="تفصیل لکھیں..."></textarea></div>',
-
-      '<div class="loc-box">',
-      '<label>📍 آپ کی لوکیشن</label>',
-      '<button class="btn-loc" onclick="getLocation(\'', fid, '\')">📍 لوکیشن حاصل کریں</button>',
-      '<span class="loc-status" id="', fid, '-ls">ابھی تک لوکیشن نہیں لی گئی</span>',
-      '<input class="loc-output" type="text" id="', fid, '-lo" placeholder="لوکیشن یہاں آئے گی" readonly/>',
-      '</div>',
-
-      '<label class="photo-label">📷 تصویر لگائیں (اختیاری)',
-      '<input type="file" accept="image/*" capture="environment"/>',
-      '</label>',
-
-      '<div class="submit-row">',
-      '<button class="btn-submit-wa" onclick="sendWA(\'', fid, '\',\'', title, '\')">📱 واٹس ایپ پر بھیجیں</button>',
-      '<button class="btn-submit-email" onclick="sendEmail(\'', fid, '\',\'', title, '\')">✉️ ای میل پر بھیجیں</button>',
-      '</div>',
-      '<p class="submit-note">✅ میسج دونوں واٹس ایپ نمبروں پر جائے گا</p>'
-    ].join('');
+/* ══ ویڈیو ══ */
+function loadVid(inp, fid) {
+  if (!inp.files || !inp.files[0]) return;
+  var file = inp.files[0];
+  var mb   = 100;
+  var sz   = (file.size/1024/1024).toFixed(1);
+  var prev = document.getElementById(fid+"-vp");
+  var info = document.getElementById(fid+"-vi");
+  if (file.size > mb*1024*1024) {
+    if(info) info.innerHTML = "<span style='color:red'>❌ فائل بڑی ہے ("+sz+"MB) – 100MB تک ہونی چاہیے</span>";
+    inp.value = "";
+    return;
   }
+  if(prev){ prev.src = URL.createObjectURL(file); prev.style.display="block"; }
+  if(info) info.textContent = "✅ "+sz+"MB | "+dt();
+}
 
-  // فارم کھولیں / بند کریں
-  function toggleForm(fid, title) {
-    var el = document.getElementById(fid);
-    if (!el) return;
-    if (!el.innerHTML.trim()) el.innerHTML = buildFormHTML(fid, title);
-    if (el.classList.contains("open")) {
-      el.classList.remove("open");
-    } else {
-      document.querySelectorAll(".inline-form.open").forEach(function(f){ f.classList.remove("open"); });
-      el.classList.add("open");
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }
+/* ══ ڈیٹا ══ */
+function gd(fid, title) {
+  function v(id){ var e=document.getElementById(id); return e?e.value.trim():""; }
+  return {
+    title : title,
+    stamp : v(fid+"-dt")     || dt(),
+    name  : v(fid+"-name")   || "(نام نہیں)",
+    phone : v(fid+"-phone")  || "(نمبر نہیں)",
+    area  : v(fid+"-area")   || "(علاقہ نہیں)",
+    detail: v(fid+"-detail") || "(تفصیل نہیں)",
+    loc   : v(fid+"-lo")     || v(fid+"-manual") || "(لوکیشن نہیں)"
+  };
+}
 
-  // لوکیشن
-  function getLocation(fid) {
-    var ls = document.getElementById(fid + "-ls");
-    var lo = document.getElementById(fid + "-lo");
-    if (!navigator.geolocation) { if(ls) ls.textContent = "براؤزر لوکیشن سپورٹ نہیں کرتا"; return; }
-    if(ls) ls.textContent = "لوکیشن لی جا رہی ہے...";
-    navigator.geolocation.getCurrentPosition(
-      function(p) {
-        var lat = p.coords.latitude.toFixed(6), lng = p.coords.longitude.toFixed(6);
-        if(lo) lo.value = "Lat:" + lat + " Lng:" + lng + " | maps.google.com/?q=" + lat + "," + lng;
-        if(ls) ls.textContent = "✅ لوکیشن مل گئی";
-      },
-      function(e) {
-        if(ls) ls.textContent = e.code === 1 ? "اجازت نہیں دی – براؤزر میں Allow کریں" : "لوکیشن نہ مل سکی";
-      },
-      { timeout: 10000, enableHighAccuracy: true }
-    );
-  }
+/* ══ واٹس ایپ ══ */
+function doWA(fid, title) {
+  var d = gd(fid, title);
+  if (!d.name || d.name==="(نام نہیں)") { alert("براہ کرم اپنا نام لکھیں"); return; }
+  var msg =
+    "🔔 *شکایت – "+d.title+"*\n"+
+    "━━━━━━━━━━━━━━━\n"+
+    "📅 "+d.stamp+"\n"+
+    "👤 نام: "    +d.name  +"\n"+
+    "📞 نمبر: "   +d.phone +"\n"+
+    "📍 علاقہ: "  +d.area  +"\n"+
+    "📝 تفصیل: "  +d.detail+"\n"+
+    "🗺️ لوکیشن:\n"+d.loc  +"\n"+
+    "━━━━━━━━━━━━━━━\n"+
+    "کونسلر پورٹل – سہراب گوتھ\n"+
+    "⚠️ تصاویر/ویڈیو منسلک کریں";
+  sendBothWA(msg);
+}
 
-  // ڈیٹا اکٹھا کریں
-  function getData(fid, title) {
-    function g(id){ var e=document.getElementById(id); return e?e.value.trim():""; }
-    return {
-      title:  title,
-      name:   g(fid+"-name")   || "(نام نہیں)",
-      phone:  g(fid+"-phone")  || "(نمبر نہیں)",
-      area:   g(fid+"-area")   || "(علاقہ نہیں)",
-      detail: g(fid+"-detail") || "(تفصیل نہیں)",
-      loc:    g(fid+"-lo")     || "(لوکیشن نہیں)"
-    };
-  }
-
-  // واٹس ایپ – دونوں نمبر
-  function sendWA(fid, title) {
-    var d = getData(fid, title);
-    if (d.name === "(نام نہیں)") { alert("براہ کرم اپنا نام لکھیں"); return; }
-    var msg =
-      "🔔 *شکایت – " + d.title + "*\n" +
-      "━━━━━━━━━━━━\n" +
-      "👤 نام: "     + d.name   + "\n" +
-      "📞 نمبر: "    + d.phone  + "\n" +
-      "📍 علاقہ: "   + d.area   + "\n" +
-      "📝 تفصیل: "   + d.detail + "\n" +
-      "🗺️ لوکیشن: " + d.loc    + "\n" +
-      "━━━━━━━━━━━━\n" +
-      "کونسلر پورٹل – سہراب گوتھ";
-    openBothWA(msg);
-  }
-
-  // ای میل
-  function sendEmail(fid, title) {
-    var d = getData(fid, title);
-    var sub = encodeURIComponent("شکایت: " + d.title + " – " + d.area);
-    var bdy = encodeURIComponent(
-      "شکایت: " + d.title + "\nنام: " + d.name +
-      "\nنمبر: " + d.phone + "\nعلاقہ: " + d.area +
-      "\nتفصیل: " + d.detail + "\nلوکیشن: " + d.loc
-    );
-    window.location.href = "mailto:" + EMAIL + "?subject=" + sub + "&body=" + bdy;
-  }
+/* ══ ای میل ══ */
+function doEmail(fid, title) {
+  var d = gd(fid, title);
+  var s = encodeURIComponent("شکایت: "+d.title+" – "+d.area+" – "+d.stamp);
+  var b = encodeURIComponent(
+    "شکایت: "+d.title+"\nتاریخ/وقت: "+d.stamp+
+    "\nنام: "+d.name+"\nنمبر: "+d.phone+
+    "\nعلاقہ: "+d.area+"\nتفصیل: "+d.detail+
+    "\n\nگوگل میپ لوکیشن:\n"+d.loc+
+    "\n\nنوٹ: تصاویر اور ویڈیو الگ سے بھیجیں۔\nکونسلر پورٹل – سہراب گوتھ"
+  );
+  window.location.href = "mailto:"+EMAIL+"?subject="+s+"&body="+b;
+}
 </script>
-
 </body>
-        </html>
+</html>
