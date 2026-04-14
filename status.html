@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<title>شکایت چیک کریں</title>
+</head>
+
+<body>
+
+<h2>شکایت ٹریک کریں</h2>
+
+<input type="text" id="track" placeholder="Tracking ID لکھیں">
+<button onclick="checkStatus()">چیک کریں</button>
+
+<p id="result"></p>
+
+<script>
+function checkStatus(){
+    let id = document.getElementById("track").value;
+
+    let data = localStorage.getItem(id);
+
+    if(data){
+        let obj = JSON.parse(data);
+        document.getElementById("result").innerHTML =
+            "نام: " + obj.name + "<br>" +
+            "مسئلہ: " + obj.issue + "<br>" +
+            "Status: " + obj.status;
+    } else {
+        document.getElementById("result").innerHTML = "ریکارڈ نہیں ملا";
+    }
+}
+</script>
+
+</body>
+</html>
